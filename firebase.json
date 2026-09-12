@@ -1,0 +1,15 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "storage": 5002,
+    "firestore": 4433,
+    "ui": 4000,
+    "singleProjectMode": true
+  }
+}

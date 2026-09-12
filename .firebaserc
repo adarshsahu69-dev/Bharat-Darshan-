@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "bharat-darshan"
+  },
+  "targets": {
+    "default": {
+      "app": ["web"]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "bharat-darshan",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bharat Darshan - explore India one place at a time (Expo + Next.js monorepo)",
+  "workspaces": ["packages/types", "mobile", "admin", "firebase/test"],
+  "scripts": {
+    "test:rules": "firebase emulators:exec 'firebase/test/firestore.rules.test.js' --project demo-bharat-darshan",
+    "test:types": "tsc -p packages/types --noEmit"
+  },
+  "keywords": ["bharat-darshan", "firebase", "expo", "nextjs"],
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE"
+}

@@ -1,0 +1,86 @@
+rules_version = `v2`;
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function getUserDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function isAdmin() {
+      return isSignedIn() && getUserDoc().data.role == 'admin';
+    }
+
+    function isContentAdmin() {
+      return isAdmin();
+    }
+
+    // ---- Public reference data: readable by anyone ----
+    match /cities/{cityId} {
+      allow read: if true;
+      allow create, update, delete: if isContentAdmin();
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create, update, delete: if isContentAdmin();
+    }
+
+    match /places/{placeId} {
+      allow get: if resource.data.status == 'published';
+      allow list: if true;
+      allow create: if isContentAdmin();
+      // Once published, `status` and `slug` are immutable.
+      allow update, delete: if isContentAdmin()
+        && !('status' in request.resource.data.diff(resource.data).affectedKeys)
+        && !('slug' in request.resource.data.diff(resource.data).affectedKeys);
+    }
+
+    match /reviews/{reviewId} {
+      allow get: if get(/databases/$(database)/documents/places/$(resource.data.placeId)).data.status == 'published';
+      allow list: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.authorId == request.auth.uid
+        && request.resource.data.status == 'pending';
+      allow update: if resource.data.authorId == request.auth.uid
+        && resource.data.status == 'pending'
+        && request.resource.data.diff(resource.data).affectedKeys.hasOnly(['rating', 'text', 'photos', 'updatedAt']);
+      allow delete: if resource.data.authorId == request.auth.uid
+        || isContentAdmin();
+    }
+
+    match /contributions/{contributionId} {
+      allow get: if resource.data.status == 'published'
+        || resource.data.authorId == request.auth.uid
+        || isContentAdmin();
+      allow list: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.authorId == request.auth.uid;
+      allow update: if isContentAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys.hasOnly(['status', 'resolvedAt']);
+      allow delete: if resource.data.authorId == request.auth.uid
+        || isContentAdmin();
+    }
+
+    // ---- User-scoped private data ----
+    match /users/{userId} {
+      allow read, update, delete: if request.auth.uid == userId || isContentAdmin();
+      allow create: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    match /users/{userId}/favorites/{placeId} {
+      allow read, list, create, delete: if request.auth.uid == userId;
+    }
+
+    match /users/{userId}/trips/{tripId} {
+      allow read, list, create, update, delete: if request.auth.uid == userId;
+    }
+
+    match /users/{userId}/notifications/{notifId} {
+      allow read, list: if request.auth.uid == userId;
+    }
+  }
+}

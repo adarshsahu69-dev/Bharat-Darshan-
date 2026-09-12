@@ -1,0 +1,50 @@
+{
+  "indexes": [
+    { "collection": "places", "queryScope": "COLLECTION", "fields": [{ "fieldPath": "status" }, { "fieldPath": "cityId" }] },
+    { "collection": "places", "queryScope": "COLLECTION", "fields": [{ "fieldPath": "cityId" }, { "fieldPath": "status" }] },
+    {
+      "collection": "places",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "categoryId" },
+        { "fieldPath": "status" },
+        { "fieldPath": "rating", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collection": "places",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tags", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "rating", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collection": "reviews",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "placeId" },
+        { "fieldPath": "status" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collection": "contributions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "authorId" },
+        { "fieldPath": "status" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collection": "contributions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
