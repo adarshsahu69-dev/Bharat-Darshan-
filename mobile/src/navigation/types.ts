@@ -1,7 +1,23 @@
-export type { RootStackParamList, MainTabParamList } from '@bharat-darshan/types';
-
 import type { NavigationProp } from '@react-navigation/native';
-import type { RootStackParamList, MainTabParamList } from '@bharat-darshan/types';
+
+export type MainTabParamList = {
+  Home: undefined;
+  Explore: undefined;
+  Itinerary: undefined;
+  Bookings: undefined;
+  Profile: undefined;
+};
+
+export type RootStackParamList = {
+  Onboarding: undefined;
+  Login: undefined;
+  Signup: undefined;
+  Main: undefined;
+  Destination: { placeId: string };
+  Itinerary: { tripId?: string };
+  Booking: { placeId: string };
+  ActiveTrip: undefined;
+};
 
 export type RootNavigationProp = NavigationProp<RootStackParamList>;
-export type MainTabNavigationProp = NavigationProp<MainTabParamList>;
+export type TabNavigationProp = NavigationProp<MainTabParamList>;

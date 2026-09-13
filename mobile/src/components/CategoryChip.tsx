@@ -1,25 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import type { Category } from '@bharat-darshan/types';
+import { StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { colors } from '../theme/colors';
 
 export default function CategoryChip({
-  category,
+  label,
   selected,
   onPress,
+  style,
 }: {
-  category: Category;
+  label: string;
   selected?: boolean;
   onPress?: () => void;
+  style?: ViewStyle;
 }) {
   return (
     <TouchableOpacity
-      style={[styles.chip, selected && styles.selected]}
+      style={[styles.chip, selected && styles.selected, style]}
       onPress={onPress}
-      activeOpacity={0.8}
+      activeOpacity={0.85}
     >
-      <Text style={[styles.label, selected && styles.selectedLabel]}>
-        {category.name}
-      </Text>
+      <Text style={[styles.label, selected && styles.selectedLabel]}>{label}</Text>
     </TouchableOpacity>
   );
 }
@@ -29,10 +29,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: '#f3f4f6',
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.border,
     marginHorizontal: 6,
   },
-  selected: { backgroundColor: '#1e3a8a' },
-  label: { fontSize: 13, color: '#374151', fontWeight: 500 },
-  selectedLabel: { color: '#ffffff' },
+  selected: { backgroundColor: colors.teal },
+  label: { fontSize: 13, color: colors.text, fontWeight: 500 },
+  selectedLabel: { color: colors.white },
 });

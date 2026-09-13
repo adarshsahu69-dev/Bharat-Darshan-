@@ -1,59 +1,35 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useAuthStore } from '../store/useAuthStore';
 import OnboardingScreen from '../screens/OnboardingScreen';
-import LanguageScreen from '../screens/LanguageScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import MainTabs from './MainTabs';
-import LoadingScreen from '../components/LoadingScreen';
-import PlaceDetailScreen from '../screens/PlaceDetailScreen';
-import ReviewsScreen from '../screens/ReviewsScreen';
-import AddReviewScreen from '../screens/AddReviewScreen';
-import ContributeScreen from '../screens/ContributeScreen';
-import TripDetailScreen from '../screens/TripDetailScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
+import DestinationScreen from '../screens/DestinationScreen';
+import ItineraryScreen from '../screens/ItineraryScreen';
+import BookingScreen from '../screens/BookingScreen';
+import ActiveTripScreen from '../screens/ActiveTripScreen';
 import type { RootStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function AppNavigator() {
-  const user = useAuthStore((s) => s.user);
-  const isOnboarded = useAuthStore((s) => s.isOnboarded);
-  const hasBootstrap = useAuthStore((s) => s.hasBootstrap);
-
-  if (!hasBootstrap) {
-    return <LoadingScreen />;
-  }
-
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false, animation: 'fade' }}
-      initialRouteName={!isOnboarded ? 'Onboarding' : user ? 'Main' : 'Login'}
+      screenOptions={{
+        headerShown: false,
+        animation: 'slide_from_right',
+        contentStyle: { backgroundColor: '#ffffff' },
+      }}
+      initialRouteName="Onboarding"
     >
-      {!isOnboarded && (
-        <>
-          <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-          <Stack.Screen name="Language" component={LanguageScreen} />
-        </>
-      )}
-      {isOnboarded && !user && (
-        <>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Signup" component={SignupScreen} />
-        </>
-      )}
-      {isOnboarded && user && <Stack.Screen name="Main" component={MainTabs} />}
-      {isOnboarded && user && (
-        <>
-          <Stack.Screen name="PlaceDetail" component={PlaceDetailScreen} />
-          <Stack.Screen name="Reviews" component={ReviewsScreen} />
-          <Stack.Screen name="AddReview" component={AddReviewScreen} />
-          <Stack.Screen name="Contribute" component={ContributeScreen} />
-          <Stack.Screen name="TripDetail" component={TripDetailScreen} />
-          <Stack.Screen name="Notifications" component={NotificationsScreen} />
-        </>
-      )}
+      <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Signup" component={SignupScreen} />
+      <Stack.Screen name="Main" component={MainTabs} />
+      <Stack.Screen name="Destination" component={DestinationScreen} />
+      <Stack.Screen name="Itinerary" component={ItineraryScreen} />
+      <Stack.Screen name="Booking" component={BookingScreen} />
+      <Stack.Screen name="ActiveTrip" component={ActiveTripScreen} />
     </Stack.Navigator>
   );
 }
