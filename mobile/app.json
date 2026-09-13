@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "Bharat Darshan",
-    "slug": "bharat-darshan",
+    "name": "Tourousum",
+    "slug": "tourousum",
     "version": "1.0.0",
+    "description": "Tourousum — modern mobile travel booking & itinerary app.",
     "orientation": "portrait",
     "platforms": ["ios", "android", "web"],
     "sdkVersion": "57.0.0",
@@ -12,30 +13,16 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00A896"
     },
     "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.bharatdarshan.app"
-    },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.tourousum.app" },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.bharatdarshan.app"
+      "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#ffffff" },
+      "package": "com.tourousum.app"
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static-registration-in-manifest"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "experiments": {
-      "typedRoutes": true
-    },
-    "plugins": ["expo-location", "expo-notifications", "expo-document-picker"]
+    "web": { "bundler": "metro", "output": "static-registration-in-manifest" },
+    "updates": { "fallbackToCacheTimeout": 0 },
+    "plugins": ["expo-notifications"]
   }
 }
