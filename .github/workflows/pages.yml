@@ -30,9 +30,6 @@ jobs:
           cache: npm
       - name: Install mobile workspace dependencies
         run: npm install --workspace mobile --legacy-peer-deps --no-audit --no-fund
-      - name: Ensure web build dependencies
-        working-directory: mobile
-        run: npx expo install -p web
       - name: Build Expo web static export
         working-directory: mobile
         run: npx expo export:web --dev=false
