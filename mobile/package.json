@@ -35,15 +35,18 @@
     "react-i18next": "^17.0.0",
     "react-native": "0.86.3",
     "react-native-safe-area-context": "^5.0.0",
-    "react-native-screens": "^4.27.0"
+    "react-native-screens": "^4.27.0",
+    "react-dom": "19.2.3",
+    "react-native-web": "^0.21.2"
   },
   "devDependencies": {
     "@babel/core": "^7.27.0",
     "@types/react": "^19.1.0",
     "typescript": "^5.8.0",
     "eslint": "^9.0.0",
-    "eslint-config-expo": "~57.0.0",
-    "react-native-web": "^0.21.2"
+    "eslint-config-expo": "~57.0.0"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  }
 }
