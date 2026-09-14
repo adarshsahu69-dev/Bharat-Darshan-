@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useLayoutEffect } from 'react';
-import { Ionicons } from 'expo-vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
 import PlaceCard from '../components/PlaceCard';
 import RatingBadge from '../components/RatingBadge';

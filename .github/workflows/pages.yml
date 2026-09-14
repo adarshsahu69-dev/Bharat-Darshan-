@@ -28,9 +28,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Install mobile dependencies
-        working-directory: mobile
-        run: npm install --legacy-peer-deps --no-audit --no-fund
+      - name: Install mobile workspace dependencies
+        run: npm install --workspace mobile --legacy-peer-deps --no-audit --no-fund
       - name: Ensure web build dependencies
         working-directory: mobile
         run: npx expo install -p web
