@@ -5,7 +5,7 @@ import { useRoute, RouteProp } from '@react-navigation/native';
 import { colors } from '../theme/colors';
 import Card from '../components/Card';
 import ThemedButton from '../components/ThemedButton';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from 'expo-vector-icons';
 import type { RootStackParamList } from '../navigation/types';
 
 const tripImage = 'https://images.unsplash.com/tokyo';

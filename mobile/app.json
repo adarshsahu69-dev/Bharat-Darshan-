@@ -21,7 +21,7 @@
       "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#ffffff" },
       "package": "com.tourousum.app"
     },
-    "web": { "bundler": "metro", "output": "static-registration-in-manifest" },
+    "web": { "bundler": "metro", "path": "/Bharat-Darshan-/" },
     "updates": { "fallbackToCacheTimeout": 0 },
     "plugins": ["expo-notifications"]
   }

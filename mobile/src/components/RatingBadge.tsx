@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from 'expo-vector-icons';
 import { colors } from '../theme/colors';
 
 const AMBER = '#F59E0B';

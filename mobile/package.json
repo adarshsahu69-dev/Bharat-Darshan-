@@ -1,5 +1,5 @@
 {
-  "name": "bharat-darshan",
+  "name": "tourousum",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
@@ -8,6 +8,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
+    "build:web": "expo export:web",
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
     "test": "node --test __tests__"
@@ -20,31 +21,29 @@
     "@react-navigation/native-stack": "^7.2.0",
     "date-fns": "^3.6.0",
     "expo": "~57.0.0",
-    "expo-constants": "~56.0.0",
-    "expo-font": "~11.10.0",
-    "expo-linking": "~7.0.0",
-    "expo-location": "~18.0.0",
-    "expo-notifications": "~27.0.0",
-    "expo-splash-screen": "~13.10.0",
-    "expo-status-bar": "~2.2.0",
-    "expo-vector-icons": "~12.1.0",
+    "expo-constants": "~57.0.0",
+    "expo-font": "~57.0.0",
+    "expo-linking": "~57.0.0",
+    "expo-location": "~57.0.0",
+    "expo-notifications": "~57.0.0",
+    "expo-splash-screen": "~57.0.0",
+    "expo-status-bar": "~57.0.0",
+    "expo-vector-icons": "~10.0.0",
     "firebase": "^12.19.0",
-    "geofire-common": "^5.3.0",
     "i18next": "^25.0.0",
     "react": "19.2.3",
     "react-i18next": "^17.0.0",
     "react-native": "0.86.3",
     "react-native-safe-area-context": "^5.0.0",
-    "react-native-screens": "^26.0.0",
-    "zustand": "^5.0.0"
+    "react-native-screens": "^4.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.27.0",
-    "@types/react": "~19.1.0",
-    "@types/react-native": "~0.86.0",
-    "typescript": "~5.9.0",
+    "@types/react": "^19.1.0",
+    "typescript": "^5.8.0",
     "eslint": "^9.0.0",
-    "eslint-config-expo": "~10.2.0"
+    "eslint-config-expo": "~57.0.0",
+    "react-native-web": "^0.21.2"
   },
   "engines": { "node": ">=22" }
 }
